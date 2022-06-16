@@ -1,5 +1,10 @@
+require('dotenv').config();
+
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('studentdb', 'root', '', {
+const db_name = process.env.DB_NAME;
+const db_user_name = process.env.DB_USER_NAME;
+const db_password = process.env.DB_PASSWORD;
+const sequelize = new Sequelize(db_name, db_user_name, db_password, {
   host: 'localhost',
   dialect: 'mysql'
 });

@@ -54,7 +54,7 @@ router.get('/email/:email', async (req, res, next) => {
                 const end = 23 * 60 + 59;
                 const date = new Date();
                 const now = (date.getHours()) * 60 + date.getMinutes();
-                if (date.getDay() == 1 || date.getDay() == 3 || date.getDay() == 6) {
+                if (date.getDay() == 1 || date.getDay() == 3 || date.getDay() == 5) {
                     if (start <= now && now <= end) {
                         await Student.create({ ...newInfo });
                         res.status(201).json({
@@ -70,7 +70,7 @@ router.get('/email/:email', async (req, res, next) => {
                 }
                 else {
                     res.status(200).json({
-                        message: 'Today is not class day! Only Saturday, Monday and Wednesday are the scheduled class days'
+                        message: 'Today is not class day! Only Monday, Wednesday and Friday are the scheduled class days'
                     })
                 }
 
@@ -80,6 +80,11 @@ router.get('/email/:email', async (req, res, next) => {
                     message: 'Invalid email format'
                 })
             }
+            // await Student.create({ ...newInfo });
+            // res.status(201).json({
+            //     message: "success",
+            //     Students: newInfo
+            // });
 
 
         }
